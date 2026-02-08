@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>超ときめき♡宣伝部 INFO HUB</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #FF7B3A;
+  --blue: #5BB5F0;
+  --red: #F04060;
+  --pink: #F78CB5;
+  --lemon: #FFD740;
+  --green: #5EC97E;
+  --purple: #A87FDB;
+  --bg: #FFF8FA;
+  --bg-hero: linear-gradient(135deg, #e8ffe8 0%, #f0fff4 30%, #e0fce6 100%);
+  --card-bg: #FFFFFF;
+  --text: #2A1F3D;
+  --text-sub: #6B5F80;
+  --text-muted: #A898BE;
+  --shadow: 0 4px 20px rgba(100,60,130,0.08);
+  --shadow-hover: 0 8px 32px rgba(100,60,130,0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'M PLUS Rounded 1c', 'Zen Maru Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ===== SPARKLE DECORATIONS ===== */
+.sparkles {
+  position: fixed;
+  top:0;left:0;width:100%;height:100%;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+.sparkle {
+  position:absolute;
+  font-size: 1rem;
+  opacity:0;
+  animation: sparkleFloat linear infinite;
+}
+@keyframes sparkleFloat {
+  0% { transform: translateY(110vh) scale(0.5) rotate(0deg); opacity:0; }
+  15% { opacity:0.6; }
+  85% { opacity:0.3; }
+  100% { transform: translateY(-5vh) scale(1) rotate(360deg); opacity:0; }
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  position: relative;
+  z-index: 20;
+  background: linear-gradient(90deg, var(--orange), #FF9E6D, var(--orange));
+  padding: 10px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(255,123,58,0.3);
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 35s linear infinite;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-item {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,248,250,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(255,123,58,0.1);
+  padding: 12px 0;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text);
+}
+.logo .heart { color: var(--orange); animation: heartBeat 2s ease-in-out infinite; }
+@keyframes heartBeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.logo small {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: rgba(255,123,58,0.08);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+nav { display: flex; gap: 4px; }
+nav a {
+  text-decoration: none;
+  color: var(--text-sub);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 20px;
+  transition: all 0.3s;
+  letter-spacing: 0.04em;
+}
+nav a:hover {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(255,123,58,0.3);
+}
+
+.header-links {
+  display: flex;
+  gap: 6px;
+}
+.header-links a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text-sub);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.03);
+  transition: all 0.3s;
+}
+.header-links a:hover { background: var(--orange); color: #fff; }
+
+/* ===== MAIN ===== */
+main {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== HERO — HIYORI FEATURED ===== */
+.hero {
+  padding: 50px 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  min-height: 72vh;
+}
+
+.hero-photo-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.hero-photo-frame {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+}
+.hero-photo-frame::before {
+  content:'';
+  position:absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, var(--green), #B8F0C8, var(--green), #7EEAA0);
+  border-radius: 28px;
+  z-index: -1;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+@keyframes borderGlow {
+  0%,100% { opacity:0.7; filter: blur(0px); }
+  50% { opacity:1; filter: blur(2px); }
+}
+
+.hero-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 22px;
+  display: block;
+  box-shadow: 0 12px 40px rgba(94,201,126,0.25);
+}
+
+.hero-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: linear-gradient(135deg, var(--green), #3DB86A);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 8px 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(94,201,126,0.4);
+  letter-spacing: 0.08em;
+  z-index: 2;
+  animation: badgePop 0.5s ease-out 0.3s both;
+}
+@keyframes badgePop {
+  from { transform: scale(0) rotate(-10deg); }
+  to { transform: scale(1) rotate(0deg); }
+}
+
+.hero-sticker {
+  position: absolute;
+  bottom: 20px;
+  left: -20px;
+  background: #fff;
+  border: 3px solid var(--green);
+  border-radius: 16px;
+  padding: 10px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--green);
+  box-shadow: var(--shadow);
+  transform: rotate(-3deg);
+  z-index:2;
+}
+
+.hero-text {
+  animation: fadeUp 0.8s ease-out 0.2s both;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(25px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(94,201,126,0.12), rgba(94,201,126,0.05));
+  border: 1.5px solid rgba(94,201,126,0.3);
+  color: #3DA86A;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 0.08em;
+}
+.hero-tag .live-dot {
+  width: 7px; height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.hero-name-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.6rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--green), #2EAA5C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+.hero-name-jp {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: 0.08em;
+}
+
+.hero-desc {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.hero-info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.chip .dot { width:8px; height:8px; border-radius:50%; }
+
+.hero-news-card {
+  background: linear-gradient(135deg, #f0fff4, #e8fce8);
+  border: 1.5px solid rgba(94,201,126,0.2);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.hero-news-card h4 {
+  font-size: 0.65rem;
+  color: var(--green);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+.hero-news-card p {
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.hero-news-card a { color: var(--orange); text-decoration: none; font-weight: 700; }
+.hero-news-card a:hover { text-decoration: underline; }
+
+/* ===== GROUP PHOTO BANNER ===== */
+.group-banner {
+  margin: 0 -20px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #FFF3E8, #FFEEE0, #FFF8F0);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.group-banner::before, .group-banner::after {
+  content: '♡';
+  position: absolute;
+  font-size: 6rem;
+  opacity: 0.04;
+  font-weight: 900;
+}
+.group-banner::before { top: -10px; left: 5%; transform: rotate(-15deg); }
+.group-banner::after { bottom: -20px; right: 5%; transform: rotate(15deg); }
+
+.group-photo-wrap {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(255,123,58,0.15);
+  border: 4px solid #fff;
+}
+.group-photo-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.group-caption {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  font-weight: 600;
+}
+.group-caption strong { color: var(--orange); }
+
+/* ===== SECTION TITLES ===== */
+.section-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 1.7rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* ===== MEMBERS ===== */
+.members-section {
+  padding: 50px 0 40px;
+}
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.member-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  cursor: pointer;
+  position: relative;
+}
+.member-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.member-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.member-photo-wrap::after {
+  content:'';
+  position:absolute;
+  bottom:0; left:0;
+  width:100%; height:50%;
+  background: linear-gradient(transparent, rgba(255,255,255,0.9));
+  pointer-events: none;
+}
+.member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s;
+}
+.member-card:hover .member-photo { transform: scale(1.05); }
+
+.member-color-bar {
+  height: 4px;
+  background: var(--member-color);
+}
+
+.member-info {
+  padding: 14px 14px 16px;
+  text-align: center;
+  position: relative;
+  margin-top: -30px;
+  z-index: 2;
+}
+.member-color-badge {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--member-color);
+  box-shadow: 0 0 0 3px #fff, 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 6px;
+}
+.member-name-jp {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.member-name-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.member-color-name {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--member-color);
+  background: color-mix(in srgb, var(--member-color) 8%, white);
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--member-color) 20%, white);
+}
+
+/* ===== NEWS ===== */
+.news-section {
+  padding: 40px 0 50px;
+}
+.news-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+}
+.news-feed { display: flex; flex-direction: column; gap: 10px; }
+.news-item {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+}
+.news-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-hover);
+  border-left-color: var(--orange);
+}
+.news-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.news-date {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.badge {
+  font-size: 0.52rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+}
+.badge-event { background: rgba(94,201,126,0.12); color: var(--green); }
+.badge-release { background: rgba(168,127,219,0.12); color: var(--purple); }
+.badge-goods { background: rgba(255,215,64,0.15); color: #C9A000; }
+.badge-media { background: rgba(91,181,240,0.12); color: var(--blue); }
+.badge-live { background: rgba(240,64,96,0.1); color: var(--red); }
+.badge-photo { background: rgba(247,140,181,0.12); color: #D06090; }
+
+.news-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.news-source {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ===== X SIDEBAR ===== */
+.x-sidebar { display: flex; flex-direction: column; gap: 14px; }
+.x-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.x-card-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-sub);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.x-badge {
+  background: var(--text);
+  color: #fff;
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 900;
+}
+.live-tag {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.55rem;
+  color: var(--green);
+  font-weight: 800;
+}
+.live-tag .dot {
+  width:6px;height:6px;
+  background:var(--green);
+  border-radius:50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+.x-post {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.x-post:last-child { border-bottom: none; }
+.x-post-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.x-avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--orange);
+}
+.x-avatar-placeholder {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #fff;
+}
+.x-name { font-size: 0.7rem; font-weight: 700; }
+.x-handle { font-size: 0.58rem; color: var(--text-muted); }
+.x-time { font-size: 0.52rem; color: var(--text-muted); margin-left: auto; }
+.x-text {
+  font-size: 0.76rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+  padding-left: 34px;
+}
+
+/* ===== EVENTS ===== */
+.events-section { padding: 40px 0 50px; }
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.event-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s;
+}
+.event-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.event-date-box {
+  min-width: 56px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--orange), #FF9E6D);
+  border-radius: 12px;
+  padding: 10px 8px;
+  color: #fff;
+}
+.event-date-box .month {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.event-date-box .day {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.event-details { flex:1; }
+.event-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.event-venue {
+  font-size: 0.7rem;
+  color: var(--text-sub);
+}
+.event-status {
+  display: inline-block;
+  font-size: 0.52rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 8px;
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+.status-soldout { background: rgba(240,64,96,0.1); color: var(--red); }
+.status-onsale { background: rgba(94,201,126,0.1); color: var(--green); }
+.status-upcoming { background: rgba(91,181,240,0.1); color: var(--blue); }
+
+/* ===== LINKS ===== */
+.links-section { padding: 40px 0 60px; }
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.link-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+.link-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.link-name { font-size: 0.78rem; font-weight: 700; }
+.link-desc { font-size: 0.58rem; color: var(--text-muted); }
+
+/* ===== FOOTER ===== */
+footer {
+  position: relative;
+  z-index: 5;
+  background: linear-gradient(135deg, #FFF3E8, #FFF8FA);
+  border-top: 2px solid rgba(255,123,58,0.08);
+  padding: 30px 20px;
+  text-align: center;
+}
+.footer-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.footer-colors span {
+  width: 24px; height: 5px;
+  border-radius: 3px;
+}
+footer p {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+footer a { color: var(--orange); text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 30px 0;
+  }
+  .hero-photo-frame { width: 300px; margin: 0 auto; }
+  .hero-name-en { font-size: 2.6rem; }
+  .members-grid { grid-template-columns: repeat(3, 1fr); }
+  .news-layout { grid-template-columns: 1fr; }
+  .events-grid { grid-template-columns: 1fr; }
+  .links-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .members-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-name-en { font-size: 2rem; }
+  nav { display: none; }
+  .header-links { display: none; }
+}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="sparkles" id="sparkles"></div>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">✨ 「超最強」TikTok総再生25億回突破！</span>
+    <span class="ticker-item">📸 吉川ひより1st写真集 3/18発売！</span>
+    <span class="ticker-item">🎵 ニューアルバム「ときめきえがお」3/4発売</span>
+    <span class="ticker-item">🏟️ 春の晴れ舞台2026 ぴあアリーナMM 3/28-29</span>
+    <span class="ticker-item">🎬 映画ひみつのアイプリ 舞台挨拶出演決定！</span>
+    <span class="ticker-item">🏆 TikTokトレンド大賞2025 受賞！</span>
+    <span class="ticker-item">✨ 「超最強」TikTok総再生25億回突破！</span>
+    <span class="ticker-item">📸 吉川ひより1st写真集 3/18発売！</span>
+    <span class="ticker-item">🎵 ニューアルバム「ときめきえがお」3/4発売</span>
+    <span class="ticker-item">🏟️ 春の晴れ舞台2026 ぴあアリーナMM 3/28-29</span>
+    <span class="ticker-item">🎬 映画ひみつのアイプリ 舞台挨拶出演決定！</span>
+    <span class="ticker-item">🏆 TikTokトレンド大賞2025 受賞！</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      超ときめき<span class="heart">♡</span>宣伝部
+      <small>INFO HUB</small>
+    </div>
+    <nav>
+      <a href="#members">MEMBERS</a>
+      <a href="#news">NEWS</a>
+      <a href="#events">EVENTS</a>
+      <a href="#links">LINKS</a>
+    </nav>
+    <div class="header-links">
+      <a href="https://toki-sen.com/" target="_blank">🌐 公式サイト</a>
+      <a href="https://x.com/sendenbu_staff" target="_blank">𝕏 公式</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO: HIYORI ===== -->
+  <section class="hero" id="hiyori">
+    <div class="hero-photo-area">
+      <div class="hero-photo-frame">
+        <img class="hero-photo"
+             src="https://cdn.stardust.co.jp/wp-content/uploads/2024/06/yoshikawahiyori_sen002.jpg"
+             alt="吉川ひより"
+             onerror="this.src='https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25558/haruka.png'; this.style.objectPosition='center';">
+        <div class="hero-badge">✨ FEATURED</div>
+        <div class="hero-sticker">🌿 超ときめき♡グリーン</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <div class="hero-tag"><span class="live-dot"></span>PICK UP MEMBER</div>
+      <div class="hero-name-en">HIYORI</div>
+      <div class="hero-name-jp">吉川 ひより ♡</div>
+      <p class="hero-desc">
+        超ときめき♡グリーン担当。2001年8月12日生まれ、千葉県出身。結成初期からグループを支える10年選手。FM FUJI冠番組『吉川ひよりの超♡まっ茶りタイム!』MC。即興モノマネ・一発ギャグで会場を沸かせるとき宣のムードメーカー。透き通る歌声も魅力♡
+      </p>
+      <div class="hero-info-chips">
+        <span class="chip"><span class="dot" style="background:var(--green)"></span>GREEN</span>
+        <span class="chip">🎂 2001.08.12</span>
+        <span class="chip">📻 FM FUJI MC</span>
+        <span class="chip">📍 千葉県</span>
+        <span class="chip">🎤 出席番号 6</span>
+      </div>
+      <div class="hero-news-card">
+        <h4>🔥 HIYORI 最新ニュース</h4>
+        <p>
+          <strong>1st写真集</strong> 2026年3月18日発売決定！✨<br>
+          お渡し会イベントも開催予定。<br>
+          <a href="https://toki-sen.com/hiyori" target="_blank">👉 詳細を見る</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== GROUP PHOTO BANNER ===== -->
+<div class="group-banner reveal">
+  <div class="group-photo-wrap">
+    <img src="https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25548/syugo_profile.jpg"
+         alt="超ときめき♡宣伝部 集合写真"
+         style="width:100%;height:auto;">
+  </div>
+  <p class="group-caption">きみのハートにロックオンっ！♡ <strong>超ときめき♡宣伝部</strong> — 結成10周年</p>
+</div>
+
+<main style="max-width:1200px;margin:0 auto;padding:0 20px;position:relative;z-index:5;">
+  <!-- ===== MEMBERS ===== -->
+  <section class="members-section reveal" id="members">
+    <div class="section-label">♡ MEMBERS</div>
+    <div class="section-heading">メンバー紹介</div>
+    <div class="section-sub">きみのハートにロックオンっ！6人のときめきをお届け♡</div>
+    <div class="members-grid">
+
+      <div class="member-card" style="--member-color: var(--blue)">
+        <div class="member-photo-wrap">
+          <img class="member-photo" src="https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25550/kanami.png" alt="辻野かなみ">
+        </div>
+        <div class="member-color-bar"></div>
+        <div class="member-info">
+          <div class="member-color-badge"></div>
+          <div class="member-name-jp">辻野 かなみ</div>
+          <div class="member-name-en">KANAMI TSUJINO</div>
+          <div class="member-color-name">超ときめき♡ブルー</div>
+        </div>
+      </div>
+
+      <div class="member-card" style="--member-color: var(--purple)">
+        <div class="member-photo-wrap">
+          <img class="member-photo" src="https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25556/julia.png" alt="杏ジュリア">
+        </div>
+        <div class="member-color-bar"></div>
+        <div class="member-info">
+          <div class="member-color-badge"></div>
+          <div class="member-name-jp">杏 ジュリア</div>
+          <div class="member-name-en">JULIA AN</div>
+          <div class="member-color-name">超ときめき♡パープル</div>
+        </div>
+      </div>
+
+      <div class="member-card" style="--member-color: var(--red)">
+        <div class="member-photo-wrap">
+          <img class="member-photo" src="https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25552/hitoka.png" alt="坂井仁香">
+        </div>
+        <div class="member-color-bar"></div>
+        <div class="member-info">
+          <div class="member-color-badge"></div>
+          <div class="member-name-jp">坂井 仁香</div>
+          <div class="member-name-en">HITOKA SAKAI</div>
+          <div class="member-color-name">超ときめき♡レッド</div>
+        </div>
+      </div>
+
+      <div class="member-card" style="--member-color: var(--pink)">
+        <div class="member-photo-wrap">
+          <img class="member-photo" src="https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25558/haruka.png" alt="小泉遥香">
+        </div>
+        <div class="member-color-bar"></div>
+        <div class="member-info">
+          <div class="member-color-badge"></div>
+          <div class="member-name-jp">小泉 遥香</div>
+          <div class="member-name-en">HARUKA KOIZUMI</div>
+          <div class="member-color-name">超ときめき♡ピンク</div>
+        </div>
+      </div>
+
+      <div class="member-card" style="--member-color: var(--lemon)">
+        <div class="member-photo-wrap">
+          <img class="member-photo" src="https://toki-sen.com/s3/skiyaki/uploads/artist_photo/image/25554/aki.png" alt="菅田愛貴">
+        </div>
+        <div class="member-color-bar"></div>
+        <div class="member-info">
+          <div class="member-color-badge"></div>
+          <div class="member-name-jp">菅田 愛貴</div>
+          <div class="member-name-en">AKI SUDA</div>
+          <div class="member-color-name">超ときめき♡レモン</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== NEWS ===== -->
+  <section class="news-section reveal" id="news">
+    <div class="section-label">♡ LATEST NEWS</div>
+    <div class="section-heading">最新ニュース</div>
+    <div class="section-sub">公式サイト・公式X・ファンXから最新情報をお届け✨</div>
+    <div class="news-layout">
+      <div class="news-feed">
+        <div class="news-item">
+          <div class="news-header">
+            <span class="news-date">2026.02.06</span>
+            <span class="badge badge-media">MEDIA</span>
+          </div>
+          <div class="news-title">「映画ひみつのアイプリ まんかいバズリウムライブ！」公開初日舞台挨拶出演決定！</div>
+          <div class="news-source">📌 toki-sen.com</div>
+        </div>
+        <div class="news-item">
+          <div class="news-header">
+            <span class="news-date">2026.02.03</span>
+            <span class="badge badge-photo">写真集</span>
+          </div>
+          <div class="news-title">「吉川ひより1st写真集」3月18日発売！お渡し会イベント発売スタート！</div>
+          <div class="news-source">📌 toki-sen.com</div>
+        </div>
+        <div class="news-item">
+          <div class="news-header">
+            <span class="news-date">2026.03.04</span>
+            <span class="badge badge-release">RELEASE</span>
+          </div>
+          <div class="news-title">ニューアルバム「ときめきえがお」発売！「あっち向いてキュン」「開花宣言！」収録</div>
+          <div class="news-source">📌 stardust.co.jp</div>
+        </div>
+        <div class="news-item">
+          <div class="news-header">
+            <span class="news-date">2026.03.28-29</span>
+            <span class="badge badge-live">LIVE</span>
+          </div>
+          <div class="news-title">「超ときめき♡春の晴れ舞台2026」ぴあアリーナMM 2days開催！</div>
+          <div class="news-source">📌 toki-sen.com</div>
+        </div>
+        <div class="news-item">
+          <div class="news-header">
+            <span class="news-date">2025.12</span>
+            <span class="badge badge-event">EVENT</span>
+          </div>
+          <div class="news-title">「超ときめき♡宣伝部のどきどきクリスマスパーティー 2025」TOYOTA ARENA TOKYO — SOLD OUT!!</div>
+          <div class="news-source">📌 toki-sen.com</div>
+        </div>
+        <div class="news-item">
+          <div class="news-header">
+            <span class="news-date">2025</span>
+            <span class="badge badge-goods">AWARD</span>
+          </div>
+          <div class="news-title">「超最強」TikTokトレンド大賞2025 インパクト・ソング部門賞受賞！総再生25億回突破🏆</div>
+          <div class="news-source">📌 stardust.co.jp</div>
+        </div>
+      </div>
+
+      <div class="x-sidebar">
+        <div class="x-card">
+          <div class="x-card-title">
+            <span class="x-badge">𝕏</span> 公式Xポスト
+            <span class="live-tag"><span class="dot"></span>LIVE</span>
+          </div>
+          <div class="x-post">
+            <div class="x-post-head">
+              <div class="x-avatar-placeholder" style="background:var(--orange)">♡</div>
+              <span class="x-name">超ときめき♡宣伝部</span>
+              <span class="x-handle">@sendenbu_staff</span>
+              <span class="x-time">最新</span>
+            </div>
+            <div class="x-text">📸 吉川ひより1st写真集発売決定！3月18日発売🌿✨ お渡し会イベントも開催します！</div>
+          </div>
+          <div class="x-post">
+            <div class="x-post-head">
+              <div class="x-avatar-placeholder" style="background:var(--orange)">♡</div>
+              <span class="x-name">超ときめき♡宣伝部</span>
+              <span class="x-handle">@sendenbu_staff</span>
+              <span class="x-time">2日前</span>
+            </div>
+            <div class="x-text">🎬 映画ひみつのアイプリ 公開初日舞台挨拶に出演決定！お楽しみに♡</div>
+          </div>
+          <div class="x-post">
+            <div class="x-post-head">
+              <div class="x-avatar-placeholder" style="background:var(--orange)">♡</div>
+              <span class="x-name">超ときめき♡宣伝部</span>
+              <span class="x-handle">@sendenbu_staff</span>
+              <span class="x-time">1週前</span>
+            </div>
+            <div class="x-text">🌸 春の晴れ舞台2026 ぴあアリーナMM 3/28(土)・3/29(日) 開催決定！</div>
+          </div>
+        </div>
+        <div class="x-card">
+          <div class="x-card-title">
+            <span class="x-badge">𝕏</span> ファン投稿
+          </div>
+          <div class="x-post">
+            <div class="x-post-head">
+              <div class="x-avatar-placeholder" style="background:var(--green)">🌿</div>
+              <span class="x-name">宣伝部員</span>
+              <span class="x-handle">@fan</span>
+            </div>
+            <div class="x-text">ひよりんの写真集楽しみすぎる😭✨ 10年間応援してきてよかった…！</div>
+          </div>
+          <div class="x-post">
+            <div class="x-post-head">
+              <div class="x-avatar-placeholder" style="background:var(--red)">❤️</div>
+              <span class="x-name">宣伝部員</span>
+              <span class="x-handle">@fan</span>
+            </div>
+            <div class="x-text">春の晴れ舞台チケット当選した！ぴあアリーナ最高の思い出になりそう🧡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS ===== -->
+  <section class="events-section reveal" id="events">
+    <div class="section-label">♡ UPCOMING</div>
+    <div class="section-heading">イベントスケジュール</div>
+    <div class="section-sub">今後のイベント・リリース情報✨</div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-date-box"><div class="month">FEB</div><div class="day">2026</div></div>
+        <div class="event-details">
+          <div class="event-name">映画ひみつのアイプリ 公開初日舞台挨拶</div>
+          <div class="event-venue">📍 詳細後日発表</div>
+          <span class="event-status status-upcoming">UPCOMING</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date-box"><div class="month">MAR</div><div class="day">4</div></div>
+        <div class="event-details">
+          <div class="event-name">アルバム「ときめきえがお」発売日</div>
+          <div class="event-venue">💿 「あっち向いてキュン」「開花宣言！」収録</div>
+          <span class="event-status status-upcoming">RELEASE</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date-box"><div class="month">MAR</div><div class="day">18</div></div>
+        <div class="event-details">
+          <div class="event-name">吉川ひより 1st写真集 発売日</div>
+          <div class="event-venue">📸 お渡し会イベントあり</div>
+          <span class="event-status status-onsale">ON SALE</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date-box"><div class="month">MAR</div><div class="day">28-29</div></div>
+        <div class="event-details">
+          <div class="event-name">超ときめき♡春の晴れ舞台2026</div>
+          <div class="event-venue">📍 神奈川・ぴあアリーナMM（2days）</div>
+          <span class="event-status status-onsale">TICKET ON SALE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LINKS ===== -->
+  <section class="links-section reveal" id="links">
+    <div class="section-label">♡ OFFICIAL LINKS</div>
+    <div class="section-heading">公式リンク集</div>
+    <div class="section-sub">超ときめき♡宣伝部の公式アカウント&サービス</div>
+    <div class="links-grid">
+      <a href="https://toki-sen.com/" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(255,123,58,0.08)">🌐</div>
+        <div class="link-name">公式サイト</div>
+        <div class="link-desc">toki-sen.com</div>
+      </a>
+      <a href="https://x.com/sendenbu_staff" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(0,0,0,0.04)">𝕏</div>
+        <div class="link-name">公式 X</div>
+        <div class="link-desc">@sendenbu_staff</div>
+      </a>
+      <a href="https://www.instagram.com/tokisen_sd/" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(247,140,181,0.1)">📷</div>
+        <div class="link-name">Instagram</div>
+        <div class="link-desc">@tokisen_sd</div>
+      </a>
+      <a href="https://www.youtube.com/channel/UCPO-HYS3fdDIKlMMgpcCzdg" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(240,64,96,0.08)">▶️</div>
+        <div class="link-name">YouTube</div>
+        <div class="link-desc">公式チャンネル</div>
+      </a>
+      <a href="https://www.tiktok.com/@tokisen_official" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(94,201,126,0.08)">♪</div>
+        <div class="link-name">TikTok</div>
+        <div class="link-desc">@tokisen_official</div>
+      </a>
+      <a href="https://mailivis.jp/shop/r/r3-tokisen" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(255,215,64,0.1)">🛍️</div>
+        <div class="link-name">グッズ通販</div>
+        <div class="link-desc">MAILIVIS</div>
+      </a>
+      <a href="https://www.stardust.co.jp/talent/section3/sendenbu/" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(168,127,219,0.08)">⭐</div>
+        <div class="link-name">スターダスト</div>
+        <div class="link-desc">事務所プロフィール</div>
+      </a>
+      <a href="https://toki-sen.com/hiyori" target="_blank" class="link-card">
+        <div class="link-icon" style="background:rgba(94,201,126,0.08)">🌿</div>
+        <div class="link-name">ひよりん</div>
+        <div class="link-desc">個人ページ</div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-colors">
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--purple)"></span>
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--pink)"></span>
+    <span style="background:var(--lemon)"></span>
+    <span style="background:var(--green)"></span>
+  </div>
+  <p>
+    超ときめき♡宣伝部 INFO HUB — ファン制作の非公式情報サイト ♡<br>
+    きみのハートにロックオンっ！<br>
+    <small>※本サイトはファンメイドです。公式サイトは <a href="https://toki-sen.com">toki-sen.com</a> をご覧ください。</small>
+  </p>
+</footer>
+
+<script>
+// Sparkle effects
+const sparklesEl = document.getElementById('sparkles');
+const sparkleSets = ['✨','⭐','💖','♡','🌟','✦','💫','♪'];
+for (let i = 0; i < 20; i++) {
+  const s = document.createElement('span');
+  s.className = 'sparkle';
+  s.textContent = sparkleSets[Math.floor(Math.random() * sparkleSets.length)];
+  s.style.left = Math.random() * 100 + '%';
+  s.style.animationDuration = (14 + Math.random() * 20) + 's';
+  s.style.animationDelay = Math.random() * 12 + 's';
+  s.style.fontSize = (0.7 + Math.random() * 0.9) + 'rem';
+  sparklesEl.appendChild(s);
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
